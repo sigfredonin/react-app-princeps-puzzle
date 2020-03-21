@@ -1,0 +1,113 @@
+:root {
+    box-sizing: border-box;
+}
+
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: ivory;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body * + * {
+    margin-top: 1.5em;
+}
+
+.princeps-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.princeps-title {
+    max-width: 1080px;
+    margin: 0 auto;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+.princeps-panel {
+    margin: 0 auto;
+    margin-top: 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: lightgray;
+}
+
+.princeps-game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.princeps-lights-row {
+    display: flex;
+    justify-content: center;
+    padding: .5em;
+    margin: .5em;
+}
+
+.princeps-buttons-row {
+    display: flex;
+    justify-content: center;
+    padding: .5em;
+    margin: .5em;
+}
+
+.princeps-buttons-reset-row {
+    display: flex;
+    padding: .5em;
+    margin: .5em;
+}
+
+.princeps-light {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: saddlebrown;
+    color: white;
+    border-width: 2px;
+    border-radius: .5rem;
+    padding:.5em;
+    width: 4em;
+    height: 4em;
+}
+
+.princeps-button {
+    background-color: slategray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-width: 2px;
+    border-radius: .5rem;
+    padding: .5em;
+    width: 4em;
+    cursor: pointer;
+}
+
+.princeps-button-reset {
+    width: 7em;
+}
+
+.princeps-lights-row > .princeps-light {
+    margin-top: 0;
+}
+
+.princeps-buttons-row > .princeps-button {
+    margin-top: 0;
+}
+
+.princeps-lights-row > .princeps-light + .princeps-light {
+    margin-left: 1em;
+}
+
+.princeps-buttons-row > .princeps-button + .princeps-button {
+    margin-left: 1em;
+}
