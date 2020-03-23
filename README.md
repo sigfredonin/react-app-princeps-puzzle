@@ -25,7 +25,7 @@ The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses 
 
 ![JK inputs logic table](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/JK-inputs.png "JK Inputs Table")
 
-Despite Martin Gardner's description, the Princeps Puzzle is actually a straightforward implementation of the rules for removing a ring, constructed with diode logic and classic small scale integrated circuits — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic.
+Despite Martin Gardner's description, the Princeps Puzzle is actually a straightforward implementation of the rules for removing a ring, constructed with diode logic and classic small scale integrated logic circuits — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic.
 
 Today an engineer would most likely implement it with one of the many inexpensive
 microcontrollers available for under $10 quantity one, and LEDs for the lights.
