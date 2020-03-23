@@ -8,7 +8,7 @@ This is a React App implementation of the electronic version of a Chinese rings 
 
 Martin Gardner, in the chapter about Gray codes of his book *Knotted doughnuts and other mathematical entertainments* (1986, W. H. Freeman and Company), describes a puzzle known as Chinese rings, made from bent wires as shown here:
 
-![Chinese rings puzzle](https://github.com/sigfredonin/react-app-princeps-puzzle/chinese-rings.jpg "Chinese rings puzzle")
+![Chinese rings puzzle](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/chinese-rings.jpg "Chinese rings puzzle")
 
 The objective is to remove the rings from the double bar threaded through them,
 which is not as easy as it appears at first glance because of their connection to the other bar to which they are all attached. Except for the first two rings, which can be removed together, a ring can only be removed if the ring next to it closer to the end is on the bar, but all the rings beyond are off the bar.
@@ -17,11 +17,11 @@ which is not as easy as it appears at first glance because of their connection t
 
 The Popular Electronics article includes this circuit diagram, which I have annotated with logic levels at selected locations --
 
-![circuit diagram](https://github.com/sigfredonin/react-app-princeps-puzzle/circuit-diagram.jpg "Princeps Puzzle circuit")
+![circuit diagram](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/circuit-diagram.jpg "Princeps Puzzle circuit")
 
 The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses the CLEAR input of all the flip-flops, setting them all to zero.  Each light turns on if the corresponding flip-flop is zero (~Q is high), so RESET turns on all of the lights.  Each push button pulses the CLOCK input of its flip-flop, which causes the flip-flop to change state if the J and K inputs are both high (true).  the logic that determines the J and K input of each flip-flop is shown in this table --
 
-![JK inputs logic table](https://github.com/sigfredonin/react-app-princeps-puzzle/JK-inputs.png "JK Inputs Table")
+![JK inputs logic table](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/JK-inputs.png "JK Inputs Table")
 
 ### React App
 
