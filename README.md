@@ -19,7 +19,7 @@ The Popular Electronics article includes this circuit diagram, which I have anno
 
 ![circuit diagram](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/circuit-diagram.jpg "Princeps Puzzle circuit")
 
-The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses the CLEAR input of all the flip-flops, setting them all to zero.  Each light turns on if the corresponding flip-flop is zero (~Q is high), so RESET turns on all of the lights.  Each push button pulses the CLOCK input of its flip-flop, which causes the flip-flop to change state if the J and K inputs are both high (true).  the logic that determines the J and K input of each flip-flop is shown in this table --
+The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses the CLEAR input of all the flip-flops, setting them all to zero.  Each light turns on if the corresponding flip-flop is zero (~Q is high), so RESET turns on all of the lights.  Each push button pulses the CLOCK input of its flip-flop, which causes the flip-flop to change state if the J and K inputs are both high (true).  The logic that determines the J and K input of each flip-flop is shown in this table --
 
 ![JK inputs logic table](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/JK-inputs.png "JK Inputs Table")
 
