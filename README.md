@@ -36,7 +36,7 @@ The Python program given later implements the logic that one would use.  The pri
 * one input port to sense the selected switch;
 * one input port to sense the RESET switch.
 
-For example, the PIC16F54 is available from multiple vendors for $0.65 in single unit quantities; it has 12 I/O pins, flash memory for 512 12-bit instructions, and 25 bytes of RAM.  The PIC16F57 costs ~$1.00 for a single unit; it has flash memory for 2048 12-bit instructions, 72 bytes of RAM, and 20 I/O pins, enough to address all of the LEDS and switches with a dedicated pin.
+For example, the PIC16F54 is available from multiple vendors for $0.65 in single unit quantities; it has 12 I/O pins, flash memory for 512 12-bit instructions, and 25 bytes of RAM.  The PIC16F57 costs ~$1.00 for a single unit; it has flash memory for 2048 12-bit instructions, 72 bytes of RAM, and 20 I/O pins, enough to use a dedicated I/O pin for each of the 8 LEDS and 9 switches.
 
 ### React App
 
