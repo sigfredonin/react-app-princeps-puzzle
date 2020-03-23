@@ -25,7 +25,7 @@ The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses 
 
 ![JK inputs logic table](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/JK-inputs.png "JK Inputs Table")
 
-Despite Martin Gardner's description, the Princeps Puzzle is actually a straightforward implementation of the rules for removing a ring, constructed with with diode logic and classic small scale integrated circuits — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic.
+Despite Martin Gardner's description, the Princeps Puzzle is actually a straightforward implementation of the rules for removing a ring, constructed with diode logic and classic small scale integrated circuits — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic.
 
 Today an engineer would most likely implement it with one of the many inexpensive
 microcontrollers available for under $10 quantity one, and LEDs for the lights.
@@ -34,9 +34,9 @@ The Python program given later implements the logic that one would use.  The pri
 * a 3-bit output port to drive an external 3-bit to 8-line decoder that selects one of the 8 LEDs and its corresponding switch;
 * one output port to drive the selected LED;
 * one input port to sense the selected switch;
-* and one input port to sense the RESET switch.
+* one input port to sense the RESET switch.
 
-For example, the PIC16F54 is available from multiple vendors for $0.65 in single unit quantities; it has 12 I/O pins, flash memory for 512 12-bit instructions, and 25 bytes of RAM.  The PIC16F57 costs ~$1.00 for a single unit; it has flash memory for 2048 12-bit instructions, 72 bytes of RAM, and 20 I/O pins --enough to address all of the LEDS and switches with a dedicated pin.
+For example, the PIC16F54 is available from multiple vendors for $0.65 in single unit quantities; it has 12 I/O pins, flash memory for 512 12-bit instructions, and 25 bytes of RAM.  The PIC16F57 costs ~$1.00 for a single unit; it has flash memory for 2048 12-bit instructions, 72 bytes of RAM, and 20 I/O pins, enough to address all of the LEDS and switches with a dedicated pin.
 
 ### React App
 
