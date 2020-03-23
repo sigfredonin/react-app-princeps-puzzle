@@ -25,7 +25,7 @@ The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses 
 
 ### React App
 
-The React app has a *game* component that maintains state corresponding to the flip-flops.  Each time a button corresponding to one of the lights is pressed, the game component commputes the JK inputs to each flip-flop, then computes the new state, changing the flip-flop corresponding to the pressed button if its JK inputs are *true*.
+The React app has a *game* component that maintains state corresponding to the flip-flops.  Each time a button corresponding to one of the lights is pressed, the game component computes the JK inputs to each flip-flop, then computes the new state, changing the flip-flop corresponding to the pressed button if its JK inputs are *true*.
 
 ### Python Code
 
