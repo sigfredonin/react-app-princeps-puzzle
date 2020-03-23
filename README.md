@@ -15,6 +15,8 @@ which is not as easy as it appears at first glance because of their connection t
 
 ### Popular Electronics Circuit
 
+Martin Gardner described the Princeps Puzzle as “an elaborate electronic version of the puzzle, with eight lights and eight push buttons.” An illuminated light represents a ring on the bar, and the corresponding switch enables the player to attempt to remove it. The Princeps Puzzle is a straightforward implementation of the rules for removing a ring, constructed with classic small scale integrated circuits and diodes — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic. Today an engineer would most likely implement it with one of the many cheap microprocessors available for under $10 quantity one, and LEDs for the lights. The Python program below implements the logic that one would use.
+
 The Popular Electronics article includes this circuit diagram, which I have annotated with logic levels at selected locations --
 
 ![circuit diagram](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/circuit-diagram.jpg "Princeps Puzzle circuit")
