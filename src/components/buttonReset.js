@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import buttonResetImage from '../images/button-reset.svg';
+import buttonResetImage from '../images/button-reset.png';
 
 class ButtonReset extends Component {
   render() {

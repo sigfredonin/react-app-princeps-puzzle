@@ -67,11 +67,26 @@ body * + * {
     margin: .5em;
 }
 
+.princeps-title-box {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    background-color: lightgray;
+    color: darkblue;
+}
+
+.princeps-instructions {
+    display: flex;
+    margin: .5em;
+    max-width: 20em;
+    text-align: right;
+}
+
 .princeps-light {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: saddlebrown;
     color: white;
     border-width: 2px;
     border-radius: .5rem;
@@ -110,4 +125,13 @@ body * + * {
 
 .princeps-buttons-row > .princeps-button + .princeps-button {
     margin-left: 1em;
+}
+
+.princeps-buttons-row > .princeps-button-reset + .princeps-title-box {
+    margin-left: 1em;
+}
+
+.princeps-instructions > p {
+    margin-block-start: 0;
+    margin-block-end: 0;
 }
