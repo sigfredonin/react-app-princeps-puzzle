@@ -44,8 +44,7 @@ The React app has a *game* component that maintains state corresponding to the f
 
 ### Python Code
 
-This Python implementation directly transcribes the circuit logic. The instance variable *q* represents the flip-flops. The variable *jk* represents the J and K inputs to the flip-flops. The function *press()* computes the result of pressing a button and pulsing the CLOCK input of a particular flip-flop. The function *reset()* computes the result of pushing the RESET button and pulsing the CLEAR input of all of the flip-flops: this returns the puzzle to its initial state with all
-of the flip-flops set to 0 and all of the lights on. The function *game()* resets the puzzle then computes and displays the light states resulting from a sequence of button presses.
+This Python implementation directly transcribes the circuit logic. The instance variable *q* represents the flip-flops. The variable *jk* represents the J and K inputs to the flip-flops. The function *press()* computes the result of pressing a button and pulsing the CLOCK input of a particular flip-flop. The function *reset()* computes the result of pushing the RESET button and pulsing the CLEAR input of all of the flip-flops: this returns the puzzle to its initial state with all of the flip-flops set to 0 and all of the lights on. The function *game()* resets the puzzle then computes and displays the light states resulting from a sequence of button presses.
 
 ```python
 class PrincepsPuzzle:
@@ -88,6 +87,57 @@ class PrincepsPuzzle:
         self.reset()
         self.presses(buttonIndices)
 ```
+Whereas the implementation above clearely mimics the circuit logic, this second implementation uses a binary representation of the lights.  This algorithm is more suitable for a very low end microcontroller, such as the PIC16F54.
+
+The instance variable *lights* holds the state of the lights; a '1' bit represents an ON light, a '0' bit represents an OFF light.  The lights are arranged left-to-right with the leftmost light represented by the high order bit and the rightmost by the low order bit.
+
+The method *show()* displays the state of the lights as a line of text on the console.  In a microcontroller based game, an output port would be wired to control the lights, for example, port B on a PIC16F54, and the method *show()* would write the lights state to the port.
+
+The methon *reset()* sets the light state to all ON.
+
+The method *press()* responds to the actuation of one of the 8 buttons asssociated with the 8 lights.
+It uses method *canChange()* to determine if the light state permits the light associated with the pressed button to change.
+It uses method *mask()* to select the individual light in the state and an XOR operation to flip its state.
+
+The method *presses()* calls *press()* for a sequence of button presses, then shows the resulting lights state.  It would not be used in a microcontroller based game.
+
+The method *game()* resets the lights, then runs a sequence of button presses.
+In a microcontroller based game, it would sense button presses and call either *reset()* or *press()* then *show()*.
+
+```python
+class PrincepsPuzzle:
+
+    def __init__(self):
+        self.lights = 0b11111111
+
+    def show(self):
+        lights = [ ((self.lights << i) & 0b10000000) == 0b10000000
+                   for i in range(8) ]
+        print("LIGHTS: " + str(lights))
+
+    def reset(self):
+        self.lights = 0b11111111
+        self.show()
+
+    def mask(self, lightIndex):
+        return 0b10000000 >> lightIndex
+
+    def canChange(self, buttonIndex):
+        return (buttonIndex == 0) or ((self.lights >> (8-buttonIndex)) == 1)
+
+    def press(self, buttonIndex):
+        if self.canChange(buttonIndex):
+            self.lights = self.lights ^ self.mask(buttonIndex)
+        self.show()
+
+    def presses(self, buttonIndices):
+        for buttonIndex in buttonIndices:
+            self.press(buttonIndex)
+
+    def game(self, buttonIndices):
+        self.reset()
+        self.presses(buttonIndices)
+'''
 
 #### Sample Game
 
