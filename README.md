@@ -10,8 +10,7 @@ Martin Gardner, in the chapter about Gray codes of his book *Knotted doughnuts a
 
 ![Chinese rings puzzle](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/chinese-rings.jpg "Chinese rings puzzle")
 
-The objective is to remove the rings from the double bar threaded through them,
-which is not as easy as it appears at first glance because of their connection to the other bar to which they are all attached. Except for the first two rings, which can be removed together, a ring can only be removed if the ring next to it closer to the end is on the bar, but all the rings beyond are off the bar.
+The objective is to remove the rings from the double bar threaded through them. This is not as easy as it appears at first glance, because of their connection to the other bar to which they are all attached. Except for the first two rings, which can be removed together, a ring can only be removed if the ring next to it closer to the end is on the bar, but all the rings beyond are off the bar.
 
 ### Popular Electronics Circuit
 
