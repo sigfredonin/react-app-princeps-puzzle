@@ -15,8 +15,8 @@ class PrincepsPuzzle:
     def mask(self, lightIndex):
         return 0b10000000 >> lightIndex
 
-    def canChange(self, buttonIndex):
-        return (buttonIndex == 0) or ((self.lights >> (8-buttonIndex)) == 1)
+    def canChange(self, lightIndex):
+        return (lightIndex == 0) or ((self.lights >> (8-lightIndex)) == 0b00000001)
 
     def press(self, buttonIndex):
         if self.canChange(buttonIndex):
