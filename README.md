@@ -102,7 +102,7 @@ It uses method *mask()* to select the individual light in the state and an XOR o
 The method *presses()* calls *press()* for a sequence of button presses, then shows the resulting lights state.  It would not be used in a microcontroller based game.
 
 The method *game()* resets the lights, then runs a sequence of button presses.
-In a microcontroller based game, it would sense button presses and call either *reset()* or *press()* then *show()*.
+In a microcontroller based game, it would loop sensing button presses and call either *reset()* or *press()* then *show()*.
 
 ```python
 class PrincepsPuzzle:
@@ -137,7 +137,7 @@ class PrincepsPuzzle:
     def game(self, buttonIndices):
         self.reset()
         self.presses(buttonIndices)
-'''
+```
 
 #### Sample Game
 
