@@ -20,13 +20,13 @@ The Popular Electronics article includes this circuit diagram, which I have anno
 
 ![circuit diagram](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/circuit-diagram.jpg "Princeps Puzzle circuit")
 
-The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses the CLEAR input of all the flip-flops, setting them all to zero.  Each light turns on if the corresponding flip-flop is zero (~Q is high), so RESET turns on all of the lights.  Each push button pulses the CLOCK input of its flip-flop, which causes the flip-flop to change state if the J and K inputs are both high (true).  The logic that determines the J and K input of each flip-flop is shown in this table --
+The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses the CLEAR input of all the flip-flops, setting them all to zero.  Each light turns on if the corresponding flip-flop is zero (~Q is high), so RESET turns on all of the lights.  Each push button pulses the CLOCK input of its flip-flop, which causes the flip-flop to change state if the J and K inputs are both high (true).  The logic that determines the J and K inputs of each flip-flop is shown in this table --
 
 ![JK inputs logic table](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/JK-inputs.png "JK Inputs Table")
 
 Despite Martin Gardner's description, the Princeps Puzzle is actually a straightforward implementation of the rules for removing a ring, constructed with diode logic and classic small scale integrated logic circuits — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most digital engineers today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic.
 
-Today an engineer would most likely implement it with one of the many inexpensive microcontrollers available for under $10 quantity one, and LEDs for the lights. The Python programs given later implements the logic that one would use.  The principal design decision would be how to trade off the number of I/O pins on the microcontroller with external logic to drive the LEDs and sense the push buttons.  The minimum requirements seem to be:
+Today an engineer would most likely implement it with one of the many inexpensive microcontrollers available for under $10 quantity one, and LEDs for the lights. The Python programs given later implement the logic that one would use.  The principal design decision would be how to trade off the number of I/O pins on the microcontroller with external logic to drive the LEDs and sense the push buttons.  One circuit design that requires very few I/O pins has these minimum requirements:
 
 * a 3-bit output port to drive an external 3-bit to 8-line decoder that selects one of the 8 LEDs and its corresponding push button;
 * one output port to drive the selected LED;
@@ -90,18 +90,18 @@ The instance variable *lights* holds the state of the lights; a '1' bit represen
 
 The method *show()* displays the state of the lights as a line of text on the console.  In a microcontroller based game, an output port would be wired to control the lights, for example, port B on a PIC16F54, and the method *show()* would write the lights state to the port.
 
-The methon *reset()* sets the lights state to all ON.
+The method *reset()* sets the lights state to all ON.
 
 The method *press()* responds to the actuation of one of the 8 buttons asssociated with the 8 lights.
 It uses method *canChange()* to determine if the lights state permits the light associated with the pressed button to change.
 It uses method *mask()* to select the individual light in the state and an XOR (exclusive OR) operation to flip its state.
 
-The method *canChange()* returns *True* if the selected light is the leftmost light (*lightIndex* is zero), or if shifting the bit representing the selected light's left neighbor into the low order position results in a b'00000001'.  The shift can only result in this value if the left neighbor of the selected light is ON and all the lights to its left are OFF.
+The method *canChange()* returns *True* if the selected light is the leftmost light (*lightIndex* is zero), or if shifting the bit representing the selected light's left neighbor into the low order position results in a b'00000001'.  The shift can only result in this value if the left neighbor of the selected light is ON and all of the lights to its left are OFF.
 
 The method *presses()* calls *press()* for a sequence of button presses, then shows the resulting lights state.  It would not be used in a microcontroller based game.
 
 The method *game()* resets the lights, then runs a sequence of button presses.
-In a microcontroller based game, it would loop sensing button presses and call either *reset()* or *press()* then *show()*.
+In a microcontroller based game, it would loop sensing button presses and calling either *reset()* or *press()* then *show()* in response.
 
 ```python
 class PrincepsPuzzle:
