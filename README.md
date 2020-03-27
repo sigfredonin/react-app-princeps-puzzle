@@ -96,6 +96,8 @@ The method *press()* responds to the actuation of one of the 8 buttons asssociat
 It uses method *canChange()* to determine if the lights state permits the light associated with the pressed button to change.
 It uses method *mask()* to select the individual light in the state and an XOR (exclusive OR) operation to flip its state.
 
+The method *canChange()* returns *True* if the selected light is the leftmost light (*lightIndex* is zero), or if shifting the bit representing the selected light's left neighbor into the low order position results in a b'00000001'.  The shift can only result in this value if the left neighbor of the selected light is ON and all the lights to its left are OFF.
+
 The method *presses()* calls *press()* for a sequence of button presses, then shows the resulting lights state.  It would not be used in a microcontroller based game.
 
 The method *game()* resets the lights, then runs a sequence of button presses.
@@ -119,8 +121,8 @@ class PrincepsPuzzle:
     def mask(self, lightIndex):
         return 0b10000000 >> lightIndex
 
-    def canChange(self, buttonIndex):
-        return (buttonIndex == 0) or ((self.lights >> (8-buttonIndex)) == 1)
+    def canChange(self, lightIndex):
+        return (lightIndex == 0) or ((self.lights >> (8-lightIndex)) == 0b00000001)
 
     def press(self, buttonIndex):
         if self.canChange(buttonIndex):
