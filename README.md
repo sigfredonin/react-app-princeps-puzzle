@@ -90,11 +90,11 @@ The instance variable *lights* holds the state of the lights; a '1' bit represen
 
 The method *show()* displays the state of the lights as a line of text on the console.  In a microcontroller based game, an output port would be wired to control the lights, for example, port B on a PIC16F54, and the method *show()* would write the lights state to the port.
 
-The methon *reset()* sets the light state to all ON.
+The methon *reset()* sets the lights state to all ON.
 
 The method *press()* responds to the actuation of one of the 8 buttons asssociated with the 8 lights.
-It uses method *canChange()* to determine if the light state permits the light associated with the pressed button to change.
-It uses method *mask()* to select the individual light in the state and an XOR operation to flip its state.
+It uses method *canChange()* to determine if the lights state permits the light associated with the pressed button to change.
+It uses method *mask()* to select the individual light in the state and an XOR (exclusive OR) operation to flip its state.
 
 The method *presses()* calls *press()* for a sequence of button presses, then shows the resulting lights state.  It would not be used in a microcontroller based game.
 
