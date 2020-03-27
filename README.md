@@ -14,7 +14,7 @@ The objective is to remove the rings from the double bar threaded through them. 
 
 ### Popular Electronics Circuit
 
-Martin Gardner described the Princeps Puzzle as “an elaborate electronic version of the puzzle, with eight lights and eight push buttons.” An illuminated light represents a ring on the bar, and the corresponding switch enables the player to attempt to remove it.
+Martin Gardner described the Princeps Puzzle as “an elaborate electronic version of the puzzle, with eight lights and eight push buttons.” An illuminated light represents a ring on the bar, and the corresponding push button enables the player to attempt to remove it.  There is also a RESET button that returns the puzzle to its initial state with all of the lights on.
 
 The Popular Electronics article includes this circuit diagram, which I have annotated with logic levels at selected locations --
 
@@ -24,18 +24,16 @@ The puzzle state is stored in the JK flip-flops Q1-Q8.  The RESET button pulses 
 
 ![JK inputs logic table](https://github.com/sigfredonin/react-app-princeps-puzzle/blob/master/JK-inputs.png "JK Inputs Table")
 
-Despite Martin Gardner's description, the Princeps Puzzle is actually a straightforward implementation of the rules for removing a ring, constructed with diode logic and classic small scale integrated logic circuits — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic.
+Despite Martin Gardner's description, the Princeps Puzzle is actually a straightforward implementation of the rules for removing a ring, constructed with diode logic and classic small scale integrated logic circuits — 7400 series TTL SSI ICs to the cognoscenti, which includes practically every engineer and hobbyist of my generation who ever built a digital logic circuit, and probably most digital engineers today as well. The transistors in the design are used to supply adequate current to the indicator lamps and play no part in the logic.
 
-Today an engineer would most likely implement it with one of the many inexpensive
-microcontrollers available for under $10 quantity one, and LEDs for the lights.
-The Python program given later implements the logic that one would use.  The principal design decision would be how to trade off the number of I/O pins on the microcontroller with external logic to drive the LEDs and sense the switches.  The minimum requirements are:
+Today an engineer would most likely implement it with one of the many inexpensive microcontrollers available for under $10 quantity one, and LEDs for the lights. The Python programs given later implements the logic that one would use.  The principal design decision would be how to trade off the number of I/O pins on the microcontroller with external logic to drive the LEDs and sense the push buttons.  The minimum requirements seem to be:
 
-* a 3-bit output port to drive an external 3-bit to 8-line decoder that selects one of the 8 LEDs and its corresponding switch;
+* a 3-bit output port to drive an external 3-bit to 8-line decoder that selects one of the 8 LEDs and its corresponding push button;
 * one output port to drive the selected LED;
-* one input port to sense the selected switch;
-* one input port to sense the RESET switch.
+* one input port to sense the selected push button;
+* one input port to sense the RESET push button.
 
-For example, the PIC16F54 is available from multiple vendors for $0.65 in single unit quantities; it has 12 I/O pins, flash memory for 512 12-bit instructions, and 25 bytes of RAM.  The PIC16F57 costs ~$1.00 for a single unit; it has flash memory for 2048 12-bit instructions, 72 bytes of RAM, and 20 I/O pins, enough to use a dedicated I/O pin for each of the 8 LEDS and 9 switches.
+For example, the PIC16F54 is available from multiple vendors for $0.65 in single unit quantities; it has 12 I/O pins, flash memory for 512 12-bit instructions, and 25 bytes of RAM.  The PIC16F57 costs ~$1.00 for a single unit; it has flash memory for 2048 12-bit instructions, 72 bytes of RAM, and 20 I/O pins, enough to use a dedicated I/O pin for each of the 8 LEDS and 9 push buttons.
 
 ### React App
 
@@ -86,7 +84,7 @@ class PrincepsPuzzle:
         self.reset()
         self.presses(buttonIndices)
 ```
-Whereas the implementation above clearely mimics the circuit logic, this second implementation uses a binary representation of the lights.  This algorithm is more suitable for a very low end microcontroller, such as the PIC16F54.
+Whereas the implementation above clearly mimics the circuit logic, this second implementation uses a binary representation of the lights.  This algorithm is more suitable for a very low end microcontroller, such as the PIC16F54.
 
 The instance variable *lights* holds the state of the lights; a '1' bit represents an ON light, a '0' bit represents an OFF light.  The lights are arranged left-to-right with the leftmost light represented by the high order bit and the rightmost by the low order bit.
 
