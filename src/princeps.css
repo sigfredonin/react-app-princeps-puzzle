@@ -50,20 +50,17 @@ body * + * {
 .princeps-lights-row {
     display: flex;
     justify-content: center;
-    padding: .5em;
     margin: .5em;
 }
 
 .princeps-buttons-row {
     display: flex;
     justify-content: center;
-    padding: .5em;
     margin: .5em;
 }
 
 .princeps-buttons-reset-row {
     display: flex;
-    padding: .5em;
     margin: .5em;
 }
 
@@ -72,15 +69,19 @@ body * + * {
     display: flex;
     flex-direction: column;
     justify-content: right;
-    background-color: lightgray;
     color: darkblue;
 }
 
-.princeps-instructions {
+.princeps-help-box {
     display: flex;
+    flex-direction: column;
+    justify-content: right;
     margin: .5em;
-    max-width: 20em;
-    text-align: right;
+    max-width: 30em;
+}
+
+.princeps-help-image {
+    margin-top:.5em;
 }
 
 .princeps-light {
@@ -111,6 +112,15 @@ body * + * {
     width: 7em;
 }
 
+.princeps-button-hint {
+    background-color: inherit;
+    border-width: 0;
+    margin: .5em;
+    padding: 0;
+    width: 7em;
+    align-self: flex-end;
+}
+
 .princeps-lights-row > .princeps-light {
     margin-top: 0;
 }
@@ -131,7 +141,8 @@ body * + * {
     margin-left: 1em;
 }
 
-.princeps-instructions > p {
+.princeps-help > p {
+    text-align: justify;
     margin-block-start: 0;
     margin-block-end: 0;
 }
